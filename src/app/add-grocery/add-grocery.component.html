@@ -1,0 +1,23 @@
+  <div style="font-family: 'Kranky'; text-align:center;">
+    <mat-form-field appearance="outline">
+      <input class="input" (keyup.enter)="onAdd()" type="text" matInput placeholder="Add Item..." [(ngModel)]="task" />
+    </mat-form-field>
+    <button class="button" type="submit" (click)="onAdd()">
+      <mat-icon matSuffix>add_circle_outline</mat-icon>
+    </button>
+  </div>
+  
+  <!--display item on the UI-->
+  <p *ngFor="let task of tasks; let i = index">
+    <span class="item">{{ i+1 }}. {{ task.name }}</span>
+    <button class="button" type="submit" (click)="onDelete(i)">
+      <mat-icon matSuffix>remove_circle</mat-icon>
+    </button>
+  </p>
+  <br />
+  <button mat-stroked-button class="deleteAllButton" (click)="deleteAll()">Delete All</button>
+
+
+
+
+
