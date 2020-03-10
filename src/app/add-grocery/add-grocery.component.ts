@@ -18,10 +18,10 @@ export class AddGroceryComponent implements OnInit {
   // add an item to the tasks array
   onAdd() {
     if (this.task.id === 0) {
-      // assign an unique timestamp to the id
-      this.tasks.push({ name: this.task.name, id:(new Date()).getTime()});
+      // assign an unique timestamp to the id and default strike as false
+      this.tasks.push({ name: this.task.name, id:(new Date()).getTime(), strike: false});
     }
-
+  
     // reset task
     this.task = {
       name: '',
@@ -31,19 +31,17 @@ export class AddGroceryComponent implements OnInit {
 
   // strike item
   onStrike(index: number) {
-      if (this.tasks.indexOf(index)) {
-        // apply strike class. default "false"
-        if (this.tasks[index].strike) {
-          this.tasks[index].strike = false;
-        } else {
-          this.tasks[index].strike = true;
-        }
-      }   
-  }
-
+      // default strike: false
+      if (this.tasks[index].strike) {
+        this.tasks[index].strike = false;
+      } else {
+        this.tasks[index].strike = true;
+      }
+   }   
+  
   // edit item
-  onEdit(item) {
-    this.task = item;
+  onEdit(task) {
+    this.task = task;
   }
   
   // delete item
